@@ -22,7 +22,7 @@ class Database {
     public function __construct()
     {
         //Set dsn
-        $dsn = 'mysql:host=' . $this->host . ':dbname=' . $this->name;
+        $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->name;
 
         $options = array(
             PDO::ATTR_PERSISTENT => true,
@@ -35,6 +35,7 @@ class Database {
 
         } catch (PDOException $e){
             $this->error = $e->getMessage();
+            echo "ERRORRRRRRRRRRRRRRR";
             echo $this->error;
         }
 

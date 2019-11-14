@@ -2,7 +2,7 @@
 
 </div>
 
-<footer class="footer fixed-bottom mb-0 pb-3 font-small bg-light">
+<footer class="footer mb-0 mt-5 pb-3 font-small bg-light">
     <hr class="mt-0">
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3">© <?php echo date("Y");?> Copyright:
