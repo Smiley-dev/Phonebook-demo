@@ -25,9 +25,9 @@
         <hr class="my-4">
 
         <div class="pt-2">
-            <button type="button" class="btn btn-primary waves-effect shadow-lg">Log in </button>
+            <a href="<?php echo URLROOT ?>/users/login" class="btn btn-light ">Login </a>
             <span class="px-md-5 px-sm-3">or</span>
-            <button type="button" class="btn btn-outline-primary waves-effect shadow-lg">Register </button>
+            <a href="<?php echo URLROOT ?>/users/register" class="btn btn-primary ">Register </a>
         </div>
 
     </div>
