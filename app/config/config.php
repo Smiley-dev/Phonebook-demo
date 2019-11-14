@@ -12,4 +12,6 @@ define('APPROOT', dirname(dirname(__FILE__)));
 //URL root
 define('URLROOT', 'http://localhost/phonebook');
 //Site name
-define('SITENAME', 'Phonebook');
+define('SITENAME', 'PhoneMailBook');
+//App version
+define('APPVERSION', '1.0.0');
