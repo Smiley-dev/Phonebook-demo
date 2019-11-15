@@ -10,9 +10,6 @@ class Users extends Controller {
     }
 
 
-    public function login(){
-        $this->view('users/login');
-    }
 
     public function register(){
 
@@ -84,7 +81,7 @@ class Users extends Controller {
             } else {
                 //Load views with errors
                 $this->view('/users/register', $data);
-                print_r($data['errors']);
+
             }
         } else {
 
@@ -103,5 +100,94 @@ class Users extends Controller {
 
             $this->view('/users/register', $data);
         }
+    }
+
+    public function login(){
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            //Data
+            $data = [
+                'email' => $_POST['email'],
+                'password' => $_POST['password'],
+                'errors' => [
+                    'email' => '',
+                    'password' => ''
+                ]
+            ];
+
+            //Validate email
+            if(empty($data['email'])){
+                $data['errors']['email'] = 'Please enter your email';
+            } elseif (!$this->userModel->findUserByEmail($data['email'])){
+                $data['errors']['email'] = 'User with that email does not exist';
+            }
+
+            //Validate password
+            if(empty($data['password'])){
+                $data['errors']['password'] = 'Please enter your password';
+            }
+
+            //Check if errors are empty
+            if(empty($data['errors']['email']) && empty($data['errors']['password'])){
+
+                $loggedInUser = $this->userModel->login($data['email'], $data['password']);
+
+                if($loggedInUser){
+
+                    //Create user session
+                    $this->createUserSession($loggedInUser);
+                } else {
+
+                    //incorrect password
+                    $data['errors']['password'] = 'Incorrect password';
+
+                    $this->view('users/login', $data);
+                }
+
+            } else {
+
+                $this->view('users/login', $data);
+
+            }
+        } else {
+
+            $data = [
+                'email' => '',
+                'password' => '',
+                'errors' => [
+                    'email' => '',
+                    'password' => ''
+                ]
+            ];
+
+            $this->view('users/login', $data);
+
+        }
+
+    }
+
+
+
+
+
+    public function createUserSession($user){
+
+        $_SESSION['user_email'] = $user->email;
+        $_SESSION['user_name'] = $user->name;
+
+        redirect('/contacts/contacts');
+    }
+
+    public function logout()
+    {
+
+        unset($_SESSION['user_email']);
+        unset($_SESSION['user_name']);
+
+        session_destroy();
+        redirect('/users/login');
     }
 }
