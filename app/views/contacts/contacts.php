@@ -5,7 +5,7 @@
             <h1 >Contacts</h1>
         </div>
         <div class="col-3 mb-3">
-            <a href="" class="btn btn-primary">Add Contact</a>
+            <a href="<?php echo URLROOT; ?>/contacts/addContact" class="btn btn-primary">Add Contact</a>
         </div>
     </div>
     <div class="row">
@@ -75,23 +75,18 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>Nemanja Gakovic</td>
-            <td>nemanja.gakovic@hotmail.com</td>
-            <td> <button class="btn btn-sm btn-primary">Send Email</button></td>
-            <td>+38765351939</td>
-            <td class="px-3"><button class="btn btn-sm btn-success">Edit</button></td>
-            <td class="px-3"><button class="btn btn-sm btn-danger">Delete</button></td>
-        </tr>
-        <tr>
 
-            <td>Andjela Delic</td>
-            <td>andjela.delic@hotmail.com</td>
-            <td> <button class="btn btn-sm btn-primary">Send Email</button></td>
-            <td>+38765281935</td>
+        <?php foreach ($data['contacts'] as $contact): ?>
+        <tr>
+            <td><?php echo $contact->name ?></td>
+            <td><?php echo $contact->email ?></td>
+            <td><?php echo (!empty($contact->email)) ? '<button class="btn btn-sm btn-primary">Send Email</button>' : '';?> </td>
+            <td><?php echo $contact->phone_number ?></td>
             <td class="px-3"><button class="btn btn-sm btn-success">Edit</button></td>
             <td class="px-3"><button class="btn btn-sm btn-danger">Delete</button></td>
         </tr>
+        <?php endforeach;?>
+
 
         </tbody>
     </table>

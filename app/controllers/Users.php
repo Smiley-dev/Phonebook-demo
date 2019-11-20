@@ -46,8 +46,8 @@ class Users extends Controller {
             //Validate email
             if(empty($data['email'])){
                 $data['errors']['email'] = 'Please enter your email';
-            } else{
-                //Check in database does that email exists
+            } elseif($this->userModel->findUserByEmail($data['email'])){
+                $data['errors']['email'] = 'User with that email has already been registred';
             }
 
             //Validate password
@@ -175,15 +175,16 @@ class Users extends Controller {
 
     public function createUserSession($user){
 
+        $_SESSION['user_id'] = $user->user_id;
         $_SESSION['user_email'] = $user->email;
         $_SESSION['user_name'] = $user->name;
 
-        redirect('/contacts/contacts');
+        redirect('/contacts');
     }
 
     public function logout()
     {
-
+        unset($_SESSION['user_id']);
         unset($_SESSION['user_email']);
         unset($_SESSION['user_name']);
 

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom ">
     <div class="container">
-        <a class="navbar-brand" href="<?php echo URLROOT; ?>"><?php echo (isset($_SESSION['user_name'])) ? 'Welcome ' . $_SESSION['user_name'] : SITENAME; ?></a>
+        <a class="navbar-brand" href="<?php echo (isset($_SESSION['user_name'])) ? URLROOT . '/contacts' : URLROOT; ?>"><?php echo (isset($_SESSION['user_name'])) ? 'Welcome ' . $_SESSION['user_name'] : SITENAME; ?></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -12,7 +12,7 @@
 
                 <li class="nav-item px-5">
                     <?php if(isset($_SESSION['user_email'])): ?>
-                    <a class="nav-link" href="<?php echo URLROOT; ?>/contacts/contacts">Contacts</a>
+                    <a class="nav-link" href="<?php echo URLROOT; ?>/contacts">Contacts</a>
                     <?php else : ?>
                     <a class="nav-link" href="<?php echo URLROOT; ?>">Home</a>
                     <?php endif; ?>
