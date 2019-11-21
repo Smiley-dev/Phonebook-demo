@@ -158,4 +158,25 @@ class Contacts extends Controller {
 
     }
 
+    public function delete($id){
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+            $contact = $this->contactModel->findContactById($id);
+
+            if($contact->user_id != $_SESSION['user_id']){
+
+                redirect('/contacts');
+
+            } else {
+                $this->contactModel->deleteContact($id);
+                redirect('/contacts');
+            }
+
+        } else {
+            redirect('/contacts');
+        }
+
+    }
+
 }

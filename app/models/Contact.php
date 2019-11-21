@@ -42,6 +42,14 @@ class Contact {
         $this->db->execute();
     }
 
+    public function deleteContact($id){
+        $this->db->query('DELETE FROM contacts WHERE contact_id = :id');
+
+        $this->db->bind(':id', $id);
+
+        $this->db->execute();
+    }
+
     public function findContactByName($name){
 
         $this->db->query('SELECT * FROM contacts WHERE name = :name');

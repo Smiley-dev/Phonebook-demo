@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a1a3f9d-1195-4b43-a269-70efeaca6f41" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/Contacts.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/Contacts.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/Contact.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Contact.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/contacts/contacts.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/contacts/contacts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/contacts/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/contacts/edit.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,20 +28,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/contacts/contacts.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="84" column="103" selection-start-line="84" selection-start-column="103" selection-end-line="84" selection-end-column="103" />
+            <state relative-caret-position="578">
+              <caret line="87" column="84" selection-start-line="87" selection-start-column="84" selection-end-line="87" selection-end-column="84" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/Contacts.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="343">
-              <caret line="97" column="28" selection-start-line="97" selection-start-column="28" selection-end-line="97" selection-end-column="28" />
+            <state relative-caret-position="700">
+              <caret line="176" column="34" selection-start-line="176" selection-start-column="34" selection-end-line="176" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -51,8 +49,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/Contact.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="445">
-              <caret line="39" column="40" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="40" />
+            <state relative-caret-position="513">
+              <caret line="49" column="29" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -107,10 +105,10 @@
         <option value="$PROJECT_DIR$/app/views/includes/navbar.php" />
         <option value="$PROJECT_DIR$/app/controllers/Users.php" />
         <option value="$PROJECT_DIR$/app/views/contacts/add.php" />
-        <option value="$PROJECT_DIR$/app/views/contacts/contacts.php" />
         <option value="$PROJECT_DIR$/app/views/contacts/edit.php" />
         <option value="$PROJECT_DIR$/app/models/Contact.php" />
         <option value="$PROJECT_DIR$/app/controllers/Contacts.php" />
+        <option value="$PROJECT_DIR$/app/views/contacts/contacts.php" />
       </list>
     </option>
   </component>
@@ -257,12 +255,12 @@
       <workItem from="1574091530351" duration="969000" />
       <workItem from="1574149549352" duration="13579000" />
       <workItem from="1574240453380" duration="8897000" />
-      <workItem from="1574328959634" duration="2610000" />
+      <workItem from="1574328959634" duration="3912000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67125000" />
+    <option name="totallyTimeSpent" value="68427000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
@@ -468,13 +466,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/contacts/contacts.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="84" column="103" selection-start-line="84" selection-start-column="103" selection-end-line="84" selection-end-column="103" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/contacts/edit.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -491,15 +482,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/Contact.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="39" column="40" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="40" />
+        <state relative-caret-position="513">
+          <caret line="49" column="29" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/Contacts.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="97" column="28" selection-start-line="97" selection-start-column="28" selection-end-line="97" selection-end-column="28" />
+        <state relative-caret-position="700">
+          <caret line="176" column="34" selection-start-line="176" selection-start-column="34" selection-end-line="176" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/contacts/contacts.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="87" column="84" selection-start-line="87" selection-start-column="84" selection-end-line="87" selection-end-column="84" />
         </state>
       </provider>
     </entry>
