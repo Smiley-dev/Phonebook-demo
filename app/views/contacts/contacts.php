@@ -82,8 +82,8 @@
             <td><?php echo $contact->email ?></td>
             <td><?php echo (!empty($contact->email)) ? '<button class="btn btn-sm btn-primary">Send Email</button>' : '';?> </td>
             <td><?php echo $contact->phone_number ?></td>
-            <td class="px-3"><button class="btn btn-sm btn-success">Edit</button></td>
-            <td class="px-3"><button class="btn btn-sm btn-danger">Delete</button></td>
+            <td class="px-3"><a href="<?php echo URLROOT;?>/contacts/edit/<?php echo $contact->contact_id; ?>" class="btn btn-sm btn-success">Edit</a></td>
+            <td class="px-3"><a class="btn btn-sm btn-danger">Delete</a></td>
         </tr>
         <?php endforeach;?>
 
