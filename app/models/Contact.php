@@ -17,6 +17,15 @@ class Contact {
 
     }
 
+    public function searchContacts($user_id, $search){
+
+        $this->db->query('SELECT * FROM contacts WHERE user_id = :user_id AND name LIKE :search ORDER BY name');
+        $this->db->bind(':user_id', $user_id);
+        $this->db->bind(':search', $search);
+        return $this->db->resultSet();
+
+    }
+
     public function addContact($user_id, $name, $email='', $phone = '', $group = '0'){
 
         $this->db->query('INSERT INTO contacts (user_id, name, email, phone_number, contact_group) VALUES (:user_id, :name, :email, :phone, :group)');
@@ -50,10 +59,11 @@ class Contact {
         $this->db->execute();
     }
 
-    public function findContactByName($name){
+    public function findContactByName($name, $id){
 
-        $this->db->query('SELECT * FROM contacts WHERE name = :name');
+        $this->db->query('SELECT * FROM contacts WHERE name = :name AND user_id = :id');
         $this->db->bind(':name', $name);
+        $this->db->bind(':id', $id);
 
         $row = $this->db->single();
 

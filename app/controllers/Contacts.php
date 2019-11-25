@@ -21,7 +21,33 @@ class Contacts extends Controller {
 
         $this->view('contacts/contacts', $data);
 
+
     }
+
+    public function search($search = ''){
+        if ($search == '') {
+            $contacts = $this->contactModel->getContacts($_SESSION['user_id']);
+
+            $data = [
+                'contacts' => $contacts
+            ];
+
+            $this->view('contacts/table', $data);
+
+        } else {
+            $contacts = $this->contactModel->searchContacts($_SESSION['user_id'], '%' .$search. '%');
+
+            $data = [
+                'contacts' => $contacts
+            ];
+
+            $this->view('contacts/table', $data);
+
+        }
+    }
+
+
+
 
     public function addContact(){
 
@@ -45,7 +71,7 @@ class Contacts extends Controller {
             //Validate name
             if(empty($_POST['name'])){
                 $data['errors']['name'] = 'Name field cannot be empty';
-            } elseif($this->contactModel->findContactByName($_POST['name'])){
+            } elseif($this->contactModel->findContactByName($_POST['name'], $_SESSION['user_id'])){
                 //Check if name already exists
                 $data['errors']['name'] = "Contact with that name already exists";
             }
@@ -111,7 +137,7 @@ class Contacts extends Controller {
             //Validate name
             if(empty($_POST['name'])){
                 $data['errors']['name'] = 'Name field cannot be empty';
-            } elseif($this->contactModel->findContactByName($_POST['name'])){
+            } elseif($this->contactModel->findContactByName($_POST['name'], $_SESSION['user_id'])){
                 //Check if name already exists
                 $data['errors']['name'] = "Contact with that name already exists";
             }
