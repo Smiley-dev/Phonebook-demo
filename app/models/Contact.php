@@ -26,6 +26,94 @@ class Contact {
 
     }
 
+    public function filterContacts($user_id, $group, $email, $phone){
+
+        $query = 'SELECT * FROM contacts WHERE user_id = :user_id ';
+
+        //Nothing is selected
+        if($group == '0' && $email == '' && $phone == ''){
+
+            $this->db->query($query . ' ORDER BY name');
+            $this->db->bind(':user_id', $user_id);
+            return $this->db->resultSet();
+
+            //Everything is selected
+        } else if ($group !== '0' && $email !== '' && $phone !== ''){
+
+            $query .= 'AND contact_group = :group AND email != "" AND phone_number != ""';
+
+            $this->db->query($query . 'ORDER BY name');
+            $this->db->bind(':user_id', $user_id);
+            $this->db->bind(':group', $group);
+
+            return $this->db->resultSet();
+
+            //Just group
+        } else if ($group !== '0' && $email == '' && $phone == ''){
+
+            $query .= 'AND contact_group = :group ';
+
+            $this->db->query($query . 'ORDER BY name');
+            $this->db->bind(':user_id', $user_id);
+            $this->db->bind(':group', $group);
+
+            return $this->db->resultSet();
+
+            //Just email
+        } else if ($group == '0' && $email !== '' && $phone == ''){
+
+            $query .= 'AND email != "" ';
+
+            $this->db->query($query . 'ORDER BY name');
+            $this->db->bind(':user_id', $user_id);
+
+
+            return $this->db->resultSet();
+
+            //Just phone
+        }  else if ($group == '0' && $email == '' && $phone !== ''){
+
+            $query .= 'AND phone_number != "" ';
+
+            $this->db->query($query . 'ORDER BY name');
+            $this->db->bind(':user_id', $user_id);
+
+            return $this->db->resultSet();
+
+            //Group and email
+        } else if($group !== '0' && $email !== '' && $phone == ''){
+
+            $query .= 'AND contact_group = :group AND email != ""';
+
+            $this->db->query($query . 'ORDER BY name');
+            $this->db->bind(':user_id', $user_id);
+            $this->db->bind(':group', $group);
+
+            return $this->db->resultSet();
+
+            //Group and phone number
+        } else if($group !== '0' && $email == '' && $phone !== ''){
+            $query .= 'AND contact_group = :group AND phone_number != ""';
+
+            $this->db->query($query . 'ORDER BY name');
+            $this->db->bind(':user_id', $user_id);
+            $this->db->bind(':group', $group);
+
+            return $this->db->resultSet();
+
+            //Email and phone number
+        } else if($group == '0' && $email !== '' && $phone !== ''){
+
+            $query .= 'AND phone_number != "" AND email != ""';
+
+            $this->db->query($query . 'ORDER BY name');
+            $this->db->bind(':user_id', $user_id);
+
+            return $this->db->resultSet();
+        }
+
+    }
+
     public function addContact($user_id, $name, $email='', $phone = '', $group = '0'){
 
         $this->db->query('INSERT INTO contacts (user_id, name, email, phone_number, contact_group) VALUES (:user_id, :name, :email, :phone, :group)');

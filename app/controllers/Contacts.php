@@ -25,6 +25,7 @@ class Contacts extends Controller {
     }
 
     public function search($search = ''){
+
         if ($search == '') {
             $contacts = $this->contactModel->getContacts($_SESSION['user_id']);
 
@@ -46,7 +47,24 @@ class Contacts extends Controller {
         }
     }
 
+    public function filter(){
 
+        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+            $group = (isset($_POST['group'])) ? $_POST['group'] : '';
+            $email = (isset($_POST['email'])) ? $_POST['email'] : '';
+            $phone = (isset($_POST['phone'])) ? $_POST['phone'] : '';
+
+            $contacts = $this->contactModel->filterContacts($_SESSION['user_id'], $group, $email, $phone);
+
+            $data = [
+                'contacts' => $contacts
+            ];
+
+            $this->view('contacts/contacts', $data);
+        }
+
+    }
 
 
     public function addContact(){
@@ -59,7 +77,7 @@ class Contacts extends Controller {
                 'user_id' => $_SESSION['user_id'],
                 'name' => $_POST['name'],
                 'email' => $_POST['email'],
-                'phone_number' => $_POST['phone'],
+                'phone_number' => $_POST['phone_number'],
                 'group' => $_POST['groups'],
                 'errors' => [
                     'name' => '',
@@ -137,9 +155,6 @@ class Contacts extends Controller {
             //Validate name
             if(empty($_POST['name'])){
                 $data['errors']['name'] = 'Name field cannot be empty';
-            } elseif($this->contactModel->findContactByName($_POST['name'], $_SESSION['user_id'])){
-                //Check if name already exists
-                $data['errors']['name'] = "Contact with that name already exists";
             }
 
             //Validate email and phone number

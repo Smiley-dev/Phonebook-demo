@@ -23,38 +23,38 @@
         </button>
 
         <div class="collapse mb-3" id="collapseExample">
-            <form action="">
+            <form action="<?php echo URLROOT; ?>/contacts/filter" method="post">
 
-            <div class="row">
+                <div class="row">
 
 
-                    <div class="input-group mb-3 col-md-4">
-                        <div class="input-group-prepend">
-                            <label class="input-group-text" for="groups">Groups</label>
+                        <div class="input-group mb-3 col-md-4">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="groups">Groups</label>
+                            </div>
+                            <select class="custom-select" id="groups" name="group">
+                                <option value="0" selected>Choose...</option>
+                                <option value="1">Family</option>
+                                <option value="2">Friends</option>
+                                <option value="3">Business</option>
+                            </select>
                         </div>
-                        <select class="custom-select" id="groups">
-                            <option selected>Choose...</option>
-                            <option value="1">Family</option>
-                            <option value="2">Friends</option>
-                            <option value="3">Business</option>
-                        </select>
-                    </div>
 
-                    <div class="form-check col-md-3 mb-2">
-                        <input type="checkbox" class="form-check-input" id="has-email">
-                        <label class="form-check-label" for="has-email">Has email</label>
-                    </div>
+                        <div class="form-check col-md-3 mb-2">
+                            <input type="checkbox" class="form-check-input" id="has-email" name="email">
+                            <label class="form-check-label" for="has-email">Has email</label>
+                        </div>
 
-                    <div class="form-check col-md-3 mb-2 ">
-                        <input type="checkbox" class="form-check-input" id="has-phone">
-                        <label class="form-check-label" for="has-phone">Has phone number</label>
-                    </div>
+                        <div class="form-check col-md-3 mb-2 ">
+                            <input type="checkbox" class="form-check-input" id="has-phone" name="phone">
+                            <label class="form-check-label" for="has-phone">Has phone number</label>
+                        </div>
 
-                    <div class="col-md-2">
-                        <input type="submit" class="btn btn-primary" value="Filter">
-                    </div>
+                        <div class="col-md-2">
+                            <input type="submit" class="btn btn-primary" value="Filter">
+                        </div>
 
-            </div>
+                </div>
 
             </form>
 
