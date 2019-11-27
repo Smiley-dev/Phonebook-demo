@@ -9,110 +9,41 @@ class Contact {
         $this->db = new Database();
     }
 
-    public function getContacts($user_id){
+    public function getContacts($user_id, $filterBy = []){
 
-        $this->db->query('SELECT * FROM contacts WHERE user_id = :user_id ORDER BY name');
-        $this->db->bind(':user_id', $user_id);
-        return $this->db->resultSet();
-
-    }
-
-    public function searchContacts($user_id, $search){
-
-        $this->db->query('SELECT * FROM contacts WHERE user_id = :user_id AND name LIKE :search ORDER BY name');
-        $this->db->bind(':user_id', $user_id);
-        $this->db->bind(':search', $search);
-        return $this->db->resultSet();
-
-    }
-
-    public function filterContacts($user_id, $group, $email, $phone){
 
         $query = 'SELECT * FROM contacts WHERE user_id = :user_id ';
+        $bindings = [':user_id' => $user_id];
 
-        //Nothing is selected
-        if($group == '0' && $email == '' && $phone == ''){
+        if(!empty($filterBy)){
 
-            $this->db->query($query . ' ORDER BY name');
-            $this->db->bind(':user_id', $user_id);
-            return $this->db->resultSet();
+            if($filterBy['group'] !== '0'){
+                $query .= 'AND contact_group = :group ';
+                $bindings[':group'] = $filterBy['group'];
+            }
+            if($filterBy['email'] !== 'false'){
+                $query .= 'AND email != "" ';
+            }
+            if($filterBy['phone'] !== 'false'){
+                $query .= 'AND phone_number != "" ';
+            }
 
-            //Everything is selected
-        } else if ($group !== '0' && $email !== '' && $phone !== ''){
-
-            $query .= 'AND contact_group = :group AND email != "" AND phone_number != ""';
-
-            $this->db->query($query . 'ORDER BY name');
-            $this->db->bind(':user_id', $user_id);
-            $this->db->bind(':group', $group);
-
-            return $this->db->resultSet();
-
-            //Just group
-        } else if ($group !== '0' && $email == '' && $phone == ''){
-
-            $query .= 'AND contact_group = :group ';
-
-            $this->db->query($query . 'ORDER BY name');
-            $this->db->bind(':user_id', $user_id);
-            $this->db->bind(':group', $group);
-
-            return $this->db->resultSet();
-
-            //Just email
-        } else if ($group == '0' && $email !== '' && $phone == ''){
-
-            $query .= 'AND email != "" ';
-
-            $this->db->query($query . 'ORDER BY name');
-            $this->db->bind(':user_id', $user_id);
-
-
-            return $this->db->resultSet();
-
-            //Just phone
-        }  else if ($group == '0' && $email == '' && $phone !== ''){
-
-            $query .= 'AND phone_number != "" ';
-
-            $this->db->query($query . 'ORDER BY name');
-            $this->db->bind(':user_id', $user_id);
-
-            return $this->db->resultSet();
-
-            //Group and email
-        } else if($group !== '0' && $email !== '' && $phone == ''){
-
-            $query .= 'AND contact_group = :group AND email != ""';
-
-            $this->db->query($query . 'ORDER BY name');
-            $this->db->bind(':user_id', $user_id);
-            $this->db->bind(':group', $group);
-
-            return $this->db->resultSet();
-
-            //Group and phone number
-        } else if($group !== '0' && $email == '' && $phone !== ''){
-            $query .= 'AND contact_group = :group AND phone_number != ""';
-
-            $this->db->query($query . 'ORDER BY name');
-            $this->db->bind(':user_id', $user_id);
-            $this->db->bind(':group', $group);
-
-            return $this->db->resultSet();
-
-            //Email and phone number
-        } else if($group == '0' && $email !== '' && $phone !== ''){
-
-            $query .= 'AND phone_number != "" AND email != ""';
-
-            $this->db->query($query . 'ORDER BY name');
-            $this->db->bind(':user_id', $user_id);
-
-            return $this->db->resultSet();
+            if($filterBy['search'] !== ''){
+                $query .= 'AND name LIKE :search ';
+                $bindings[':search'] = '%' . $filterBy['search'] . '%';
+            }
         }
 
+        $this->db->query($query);
+        foreach ($bindings as $key => $value){
+            $this->db->bind($key, $value);
+        }
+
+        return $this->db->resultSet();
+
     }
+
+
 
     public function addContact($user_id, $name, $email='', $phone = '', $group = '0'){
 

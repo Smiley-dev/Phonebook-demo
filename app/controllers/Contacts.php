@@ -24,44 +24,20 @@ class Contacts extends Controller {
 
     }
 
-    public function search($search = ''){
-
-        if ($search == '') {
-            $contacts = $this->contactModel->getContacts($_SESSION['user_id']);
-
-            $data = [
-                'contacts' => $contacts
-            ];
-
-            $this->view('contacts/table', $data);
-
-        } else {
-            $contacts = $this->contactModel->searchContacts($_SESSION['user_id'], '%' .$search. '%');
-
-            $data = [
-                'contacts' => $contacts
-            ];
-
-            $this->view('contacts/table', $data);
-
-        }
-    }
 
     public function filter(){
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
-            $group = (isset($_POST['group'])) ? $_POST['group'] : '';
-            $email = (isset($_POST['email'])) ? $_POST['email'] : '';
-            $phone = (isset($_POST['phone'])) ? $_POST['phone'] : '';
+            $filters = $_POST;
 
-            $contacts = $this->contactModel->filterContacts($_SESSION['user_id'], $group, $email, $phone);
+            $contacts = $this->contactModel->getContacts($_SESSION['user_id'], $filters);
 
             $data = [
                 'contacts' => $contacts
             ];
 
-            $this->view('contacts/contacts', $data);
+            $this->view('contacts/table', $data);
         }
 
     }
