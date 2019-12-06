@@ -21,7 +21,7 @@
                 you do not need to confirm your email address so, in order to try this app, feel free to create account with non-existing email address.</p>
                 <p class="card-text">I hope you will enjoy using <?php echo SITENAME; ?> and if you have any more questions feel free to
                 contact me at <strong>nemanja.gakovic@hotmail.com</strong></p>
-                <p class="card-text"><small>Technologies used to make this app: PHP, JavaScript, HTML, CSS, Bootstrap, MYSQL</small></p>
+                <p class="card-text"><small>Technologies used to make this app: PHP, JavaScript, HTML, CSS, Bootstrap, MYSQL, SendGrid API</small></p>
 
             </div>
             <!-- Grid column -->

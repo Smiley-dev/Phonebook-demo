@@ -15,3 +15,6 @@ define('URLROOT', 'http://localhost/phonebook');
 define('SITENAME', 'PhoneMailBook');
 //App version
 define('APPVERSION', '1.0.0');
+
+//Sendgrid API
+define('API_KEY_SEND_GRID', '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');

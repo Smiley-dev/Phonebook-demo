@@ -105,4 +105,19 @@ class Contact {
             return $row;
         }
     }
+
+    public function findContactByEmail($user_id, $email){
+
+        $this->db->query('SELECT * FROM contacts WHERE user_id = :user_id AND email = :email');
+        $this->db->bind(':user_id', $user_id);
+        $this->db->bind(':email', $email);
+
+        $row = $this->db->single();
+
+        if(empty($row)){
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

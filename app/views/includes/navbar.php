@@ -19,7 +19,7 @@
                 </li>
                 <li class="nav-item px-5">
                     <?php if(isset($_SESSION['user_email'])): ?>
-                        <a class="nav-link" href="<?php echo URLROOT; ?>/contacts/emailsSent">Emails</a>
+                        <a class="nav-link" href="<?php echo URLROOT; ?>/emails">Emails</a>
                     <?php else : ?>
                         <a class="nav-link" href="<?php echo URLROOT; ?>/pages/about">About</a>
                     <?php endif; ?>

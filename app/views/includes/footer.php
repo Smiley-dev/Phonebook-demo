@@ -8,8 +8,8 @@
     <div class="footer-copyright text-center py-3">© <?php echo date("Y");?> Copyright:
         <a href="https://mdbootstrap.com/education/bootstrap/"> Nemanja Gakovic </a>
 
-        <a href="" class="fb-ic mx-md-5 mx-3"><i class="fab fa-github-square text-dark"></i></a>
-        <a href="" class="li-ic"><i class="fab fa-linkedin text-dark"></i></a>
+        <a href="https://github.com/Smiley-dev" target="_blank" class="fb-ic mx-md-5 mx-3"><i class="fab fa-github-square text-dark"></i></a>
+        <a href="" target="_blank" class="li-ic"><i class="fab fa-linkedin text-dark"></i></a>
     </div>
     <!-- Copyright -->
 </footer>
