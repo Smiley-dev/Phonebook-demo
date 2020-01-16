@@ -14,7 +14,7 @@
                     <?php if(isset($_SESSION['user_email'])): ?>
                     <a class="nav-link" href="<?php echo URLROOT; ?>/contacts">Contacts</a>
                     <?php else : ?>
-                    <a class="nav-link" href="<?php echo URLROOT; ?>">Home</a>
+                    <a class="nav-link" href="<?php echo URLROOT; ?>/pages">Home</a>
                     <?php endif; ?>
                 </li>
                 <li class="nav-item px-5">
